@@ -43,11 +43,19 @@ email_input.send_keys("skunk0915@gmail.com")
 password_input = wait.until(EC.presence_of_element_located((By.NAME, "tpasswd")))
 password_input.send_keys("ane76urtmz")
 
+# デバッグ用：スクリーンショット保存
+time.sleep(2)  # ページの読み込みを待つ
+driver.save_screenshot('before_login.png')
+
 # ④ ログインボタンを押す
+# MdBtn01クラスのボタンをクリック
 login_button = wait.until(
-    EC.element_to_be_clickable((By.XPATH, '//button[@type="submit" and contains(text(), "ログイン")]'))
+    EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.MdBtn01[type="submit"]'))
 )
 login_button.click()
+
+# ログイン処理後、少し待機
+time.sleep(3)
 
 
 # ログイン後のページ遷移を待つ
